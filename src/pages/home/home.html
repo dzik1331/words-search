@@ -1,14 +1,33 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
+	<ion-navbar color="titleColor">
+		<ion-title>
+			SłowoSzukacz
+		</ion-title>
+	</ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content class="master" padding>
+		<ion-grid>
+			<ion-row text-center>
+				<ion-list class="center-div">
+					<ion-item class="master">
+							<ion-label floating>Litery</ion-label>
+							<ion-input type="text" maxlength="10" [(ngModel)]="search.letters"></ion-input>
+					</ion-item>
+					<ion-item class="master">
+								<ion-range [(ngModel)]="search.len" min="2" max="10" pin="true">
+									<ion-icon range-left name="arrow-dropleft" (click)="changeLettersNum('minus')"></ion-icon>
+									<ion-icon range-right name="arrow-dropright" (click)="changeLettersNum('plus')"></ion-icon>
+								</ion-range>
+					</ion-item>
+				</ion-list>
+			</ion-row>
+			<ion-row>
+				<ion-item class="info">
+						<ion-badge>Litery: {{search.letters}}</ion-badge>
+						<ion-badge>Długość: {{search.len}}</ion-badge>
+				</ion-item>
+					<button ion-button full color="titleColor" [disabled]="search.letters.length <= 0" (click)="goToSearchPage()">Szukaj</button>
+			</ion-row>
+		</ion-grid>
 </ion-content>
